@@ -425,7 +425,7 @@
   .event-card {
     min-width: 0;
     padding: clamp(18px, 3vw, 36px) clamp(12px, 2vw, 24px);
-    margin: ;
+    margin: 0;
     background: rgba(255, 250, 240, 0.88);
     border: 1px solid var(--gold);
     outline: 1px solid var(--gold);
@@ -475,11 +475,10 @@
   /* Keep two cards side by side on mobile too */
   @media (max-width: 640px) {
     .event-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: 1fr;
+      gap: 18px;
       margin-top: 24px;
     }
-
     .event-card {
       padding: 22px 10px;
       outline-offset: -5px;
@@ -725,7 +724,7 @@
       }
 
       .event-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: 1fr;
       }
     }
 
@@ -1080,7 +1079,300 @@
       font-size: 19px;
     }
   }
-  
+
+/* =========================================
+   PREMIUM reception CARD
+   ========================================= */
+
+.reception-card {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      rgba(255, 235, 145, 0.12),
+      rgba(255, 235, 145, 0.12)
+    ),
+    url("images/reception.png") center center / cover no-repeat !important;
+
+  color: #4b2b05;
+
+  box-shadow:
+    0 12px 30px rgba(92, 55, 5, 0.20),
+    inset 0 0 25px rgba(255, 255, 255, 0.18);
+}
+
+/* =========================================
+   ELEGANT CENTRAL TEXT PANEL
+   ========================================= */
+
+.reception-card::before {
+  content: "";
+  position: absolute;
+
+  left: 7%;
+  right: 7%;
+  top: 9%;
+  bottom: 9%;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 251, 231, 0.88),
+      rgba(255, 244, 194, 0.78)
+    );
+
+  border: 1px solid rgba(156, 105, 15, 0.65);
+  border-radius: 22px;
+
+  box-shadow:
+    0 8px 25px rgba(91, 53, 0, 0.16),
+    inset 0 0 18px rgba(255, 255, 255, 0.35);
+
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+
+  z-index: 1;
+}
+
+
+/* Inner decorative border */
+
+.reception-card::after {
+  content: "";
+  position: absolute;
+
+  left: calc(7% + 7px);
+  right: calc(7% + 7px);
+  top: calc(9% + 7px);
+  bottom: calc(9% + 7px);
+
+  border: 1px solid rgba(180, 125, 20, 0.35);
+  border-radius: 17px;
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+/* =========================================
+   KEEP CONTENT ABOVE PANEL
+   ========================================= */
+
+.reception-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =========================================
+   DECORATIVE SYMBOL
+   ========================================= */
+
+.reception-card .orn {
+  color: #b47708;
+
+  font-size: 1.25rem;
+
+  text-shadow:
+    0 1px 0 #fff8d9,
+    0 2px 4px rgba(91, 50, 0, 0.25);
+
+  margin-bottom: 4px;
+}
+
+
+/* =========================================
+   reception HEADING
+   ========================================= */
+
+.reception-card h3 {
+  color: #633706;
+
+  font-weight: 700;
+  letter-spacing: 0.5px;
+
+  margin: 4px 0 30px;
+
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.9),
+    0 2px 3px rgba(91, 50, 0, 0.15);
+}
+
+
+/* Elegant gold line below reception */
+
+.reception-card h3::after {
+  content: "";
+  display: block;
+
+  width: 55px;
+  height: 2px;
+
+  margin: 8px auto 0;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #b47708,
+    transparent
+  );
+
+  border-radius: 50%;
+}
+
+
+/* =========================================
+   DATE
+   ========================================= */
+
+.reception-card p {
+  color: #4d2c05;
+
+  font-weight: 600;
+  font-size:large;
+
+  text-shadow:
+    0 1px 1px rgba(255,255,255,0.65);
+
+  margin: 0px 0 20px;
+}
+
+.reception-card h6 {
+  color: #4d2c05;
+
+  font-weight: 600;
+  font-size:small;
+
+  text-shadow:
+    0 1px 1px rgba(255,255,255,0.65);
+
+  margin: 0px 0 20px;
+}
+
+/* =========================================
+   SMALL LABELS
+   ========================================= */
+
+.reception-card .small {
+  color: #a06605;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+
+/* =========================================
+   VENUE NAME
+   ========================================= */
+
+.reception-card h5 {
+  color: #5b3305;
+
+  font-weight: 700;
+
+  margin: 4px 0 20px;
+
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.8);
+}
+
+
+/* =========================================
+   ADDRESS / DETAILS
+   ========================================= */
+
+.reception-card p:not(.small) {
+  line-height: 1.55;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 640px) {
+
+  .reception-card::before {
+    left: 5%;
+    right: 5%;
+    top: 6%;
+    bottom: 6%;
+
+    border-radius: 18px;
+  }
+
+  .reception-card::after {
+    left: calc(5% + 6px);
+    right: calc(5% + 6px);
+    top: calc(6% + 6px);
+    bottom: calc(6% + 6px);
+
+    border-radius: 14px;
+  }
+
+  .reception-card h3 {
+    margin-bottom: 8px;
+  }
+
+  .reception-card .orn {
+    font-size: 1rem;
+  }
+
+  .reception-card .small {
+    letter-spacing: 0.8px;
+  }
+}
+
+/* ===== MOBILE EVENT CARDS: ONE BELOW ANOTHER ===== */
+
+@media (max-width: 640px) {
+  .event-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  .event-card {
+    width: 100%;
+  }
+}
+
+/* ===== FIX HOTEL ADDRESS OVERFLOW IN EVENT CARDS ===== */
+
+.event-card h6 {
+  display: block;
+  width: 80%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+
+  text-align: center;
+  line-height: 1.6;
+  font-size: 13px;
+
+  padding: 0 8px;
+  margin: 10px 0 16px;
+}
+
+/* Extra adjustment for smaller phone screens */
+@media (max-width: 640px) {
+  .event-card h6 {
+    font-size: 12px;
+    line-height: 1.55;
+    padding: 0 6px;
+  }
+}
+
     </style>
     </head>
     <body class="locked">
@@ -1155,17 +1447,17 @@
         <div class="rail" tabindex="0" aria-label="Our story photos">
 
           <div class="slide">
-            <img src="images/sam1.jpeg" alt="Our beautiful beginning">
+            <img src="images/sam01.jpeg" alt="Our beautiful beginning">
             <div class="slide-caption">Every journey led us here</div>
           </div>
 
           <div class="slide">
-            <img src="images/sam1.jpeg" alt="A beautiful memory together">
+            <img src="images/sam2.jpeg" alt="A beautiful memory together">
             <div class="slide-caption">Two hearts, one beautiful story</div>
           </div>
 
           <div class="slide">
-            <img src="images/sam1.jpeg" alt="A special moment">
+            <img src="images/sam3.jpeg" alt="A special moment">
             <div class="slide-caption">Moments to treasure forever</div>
           </div>
 
@@ -1182,8 +1474,10 @@
       <div class="orn">♥</div>
       <p class="small">A celebration of love, faith &amp; forever</p>
 
-        <!-- Right card: Reception -->
-        <div class="event-card">
+      <div class="event-grid">
+
+        <!-- Reception -->
+        <div class="event-card reception-card">
           <div class="orn">✦</div>
           <h3>Reception</h3>
           <p>24th January 2027</p>
@@ -1191,7 +1485,7 @@
           <p>Details to be added</p>
           <p class="small">Venue</p>
           <h5>Hotel Regal</h5>
-          <p>Nampally Station Road, adjacent to Metro Foot Wear, opposite the ISKCON Temple, Abids, Hyderabad, Telangana – 500001</p>
+          <h6>Nampally Station Road, adjacent to Metro Foot Wear, opposite the ISKCON Temple, Abids, Hyderabad, Telangana – 500001</h6>
         </div>
 
       </div>
